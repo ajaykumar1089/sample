@@ -1,4 +1,6 @@
+
 {
+  "type": "module",
   "homepage": "https://ajaykumar1089.github.io/sample",
   "name": "my-app",
   "version": "0.1.0",
