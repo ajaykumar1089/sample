@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App.jsx';
+// import App from './App.jsx';
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode type="text/babel">
-    <App />
-  </React.StrictMode>
+  // <React.StrictMode type="text/babel">
+  //   <App />
+  // </React.StrictMode>
+  <script type="module" src="App.jsx"></script>
 );
 
 // If you want to start measuring performance in your app, pass a function
