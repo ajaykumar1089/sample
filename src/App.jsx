@@ -78,7 +78,7 @@ const Home = () => {
         <div style={styles.container}>
           <div style={styles.hero}></div>          
           <section style={styles.section}>
-            <h2>Popular Destinations</h2>
+            <h2>Popular Destinations in India</h2>
             <div style={styles.cardContainer}>
               {myArray.map((item, index) => (
                 <div key={index} style={styles.card}>

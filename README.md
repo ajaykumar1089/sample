@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Getting Started with Create Traveller Clicks- World at your finger Tips
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Traveller Clicks- World at your finger Tips](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
