@@ -1,11 +1,667 @@
 <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="utf-8" />
-        <title>Traveller Clicks</title>
-      </head>
-      <body>
-        <noscript>You need to enable JavaScript to run this app.</noscript>
-        <div id="root"></div>
-      </body>
-    </html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Portal</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #0077b6;
+      color: white;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      padding: 0px 0px 0px 40px;
+    }
+
+    header img {
+      height: 100px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 6px 12px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-buttons a {
+      background: white;
+      color: #0077b6;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    .nav-buttons a:hover {
+      background: #caf0f8;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav,
+      .nav-buttons {
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+    }
+
+    .booking-form {
+      background: #fff;
+      /* padding: 20px; */
+      /* max-width: 600px; */
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .trip-type {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+
+    .submit-btn {
+      background: #007bff;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 25%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background: #0056b3;
+    }
+
+
+
+    .places {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+
+    }
+
+    .place-card {
+      width: 200px;
+      background: #f1f1f1;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .place-card:hover {
+      transform: scale(1.05);
+    }
+
+    .place-card i {
+      font-size: 40px;
+      color: #007bff;
+      margin-bottom: 10px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    iframe {
+      width: 98%;
+      height: 300px;
+      border: none;
+    }
+
+
+    /* --------------------------- */
+    .traveler-slider-container {
+      width: 100%;
+      /* Adjust as needed */
+      overflow-x: auto;
+      /* Enables horizontal scrolling */
+      white-space: nowrap;
+      /* Prevents wrapping of items */
+      -webkit-overflow-scrolling: touch;
+      /* Smooth scrolling on iOS */
+      padding: 10px 0px 0px 120px;
+    }
+
+    .traveler-slider {
+      display: inline-block;
+      /* Allows horizontal arrangement */
+      white-space: nowrap;
+      /* Prevents wrapping of items within the slider */
+      /* Add other styles for the slider, e.g., spacing between items */
+    }
+
+    .traveler-item {
+      display: inline-block;
+      /* Arrange items horizontally */
+      width: 100px;
+      /* Adjust width of each item */
+      margin-right: 10px;
+      /* Spacing between items */
+      text-align: center;
+    }
+
+    .traveler-item img {
+      width: 100px;
+      /* Adjust image size */
+      height: 80px;
+      /* Adjust image size */
+      border-radius: 50%;
+      /* Make images circular */
+      object-fit: cover;
+      /* Ensure images fit within the defined size */
+    }
+
+    /* ------------------------------------------- */
+
+    .slider-container {
+      position: relative;
+      width: 98%;      
+      margin: 40px auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      height: 600px;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 24px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .arrow-left {
+      left: 10px;
+    }
+
+    .arrow-right {
+      right: 10px;
+    }
+
+
+
+    .slider-containerUser {
+      position: relative;
+      width: 100%;
+      max-width: 98%;
+      overflow: hidden;
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sliderUser {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .user-box {
+      min-width: 150px;
+      border-right: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .user-img {
+      width: 60px;
+      height: 250px;
+      border-radius: 50%;
+      position: relative;
+      margin-bottom: 5px;
+    }
+
+    .user-img::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 12px;
+      height: 12px;
+      background: #0f0;
+      border: 2px solid #fff;
+      border-radius: 50%;
+    }
+
+    .arrowUser {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #333;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 50%;
+    }
+
+    .arrowUser.left {
+      left: 2px;
+    }
+
+    .arrowUser.right {
+      right: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <header>
+
+      <div class="logo"><img src="assets/logo_travellerclicks_10x10.png" alt="Logo"></div>
+
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Premium Destinations</a>
+        <a href="#">Home Stays</a>
+        <a href="#">Destinations in Live </a>
+      </nav>
+
+      <div class="nav-buttons">
+        <a href="#">Login</a>
+        <a href="#">Sign Up</a>       
+        <a href="#">My VLogs</a>
+        <a href="#">Others VLogs</a>
+      </div>
+    </header>
+  </div>
+  <div class="booking-form">
+    <div class="places">
+      <div class="place-card">
+        <!-- CamperVan icon animated traveller in  <i  element html -->
+        <i class="fas fa-shuttle-van campervan-icon"></i>
+        <!-- <img src="assets/campervan.png" alt="Flight Icon" style="width: 50px; height: 50px;"> -->
+        <h3>CamperVan</h3>
+      </div>
+
+      <div class="place-card">
+        <i class="fas fa-hotel"></i>
+        <h3>Hotels</h3>
+      </div>
+      <div class="place-card">
+        <i class="fas fa-plane"></i>
+        <h3>Flights</h3>
+      </div>
+      <div class="place-card">
+        <i class="fas fa-car"></i>
+        <h3>Rented Cars</h3>
+      </div>
+      <div class="place-card">
+        <i class="fas fa-motorcycle"></i>
+        <h3>Scooty</h3>
+      </div>
+      <div class="place-card">
+        <i class="fas fa-train"></i>
+        <h3>Trains</h3>
+      </div>
+      <div class="place-card">
+        <i class="fas fa-bus"></i>
+        <h3>Bus</h3>
+      </div>
+      <div class="place-card">
+        <i class="fas fa-ship"></i>
+        <h3>Boat & Ferries</h3>
+      </div>
+
+      <div class="place-card">
+        <!-- Tourist Guide Icon -->
+        <i class="fas fa-user-tie guide-icon" title="Hire Tourist Guide"></i>
+        <h3>Hire Trip Coach</h3>
+      </div>
+      <div class="place-card">
+        <i class="fas fa-bus"></i>
+        <h3>Bus</h3>
+      </div>
+      <div class="place-card">
+        <i class="fas fa-ship"></i>
+        <h3>Boat & Ferries</h3>
+      </div>
+
+      <div class="place-card">
+        <i class="fas fa-ticket-alt"></i>
+        <h3>Tickets & Events</h3>
+      </div>
+      <div class="place-card">
+        <i class="fas fa-bus"></i>
+        <h3>Bus</h3>
+      </div>
+      <div class="place-card">
+        <i class="fas fa-ship"></i>
+        <h3>Boat & Ferries</h3>
+      </div>
+
+      <div class="place-card">
+        <i class="fas fa-ticket-alt"></i>
+        <h3>Tickets & Events</h3>
+      </div>
+
+      <div class="place-card">
+        <div class="family-group">
+          <i class="fas fa-person"></i> <!-- Parent 1 -->
+          <i class="fas fa-person-dress"></i> <!-- Parent 2 -->
+          <i class="fas fa-child"></i> <!-- Child -->
+          <i class="fas fa-baby"></i> <!-- Baby -->
+          <i class="fas fa-suitcase-rolling"></i> <!-- Luggage -->
+        </div>
+        <h3>Family Travellers</h3>
+      </div>
+      <div class="place-card">
+        <i class="fas fa-money-bill-wave"></i> <!-- Money -->
+        <i class="fas fa-right-left"></i> <!-- Exchange -->
+        <h3>Forex Exchange</h3>
+      </div>
+      <div class="place-card">
+        <i class="fas fa-map-marked-alt"></i> <!-- Tourist Map Icon -->
+        <h3>Tourist Map</h3>
+      </div>
+      <div class="trip-type">
+        <label><input type="radio" name="tripType" value="oneway" checked> One Way</label>
+        <label><input type="radio" name="tripType" value="roundtrip"> Round Trip</label>
+      </div>
+
+      <div class="form-group">
+        <label for="from">From Location</label>
+        <input type="text" id="from" name="from" placeholder="City or Airport">
+      </div>
+
+      <div class="form-group">
+        <label for="to">To Location</label>
+        <input type="text" id="to" name="to" placeholder="City or Airport">
+      </div>
+
+      <div class="form-group">
+        <label for="departure">Departure Date</label>
+        <input type="date" id="departure" name="departure">
+      </div>
+
+      <div class="form-group" id="returnDateGroup" style="display: none;">
+        <label for="return">Return Date</label>
+        <input type="date" id="return" name="return">
+      </div>
+
+      <div class="form-group">
+        <label for="travellers">Travellers</label>
+        <input type="number" id="travellers" name="travellers" min="1" value="1">
+      </div>
+
+      <button class="submit-btn">Search</button>
+    </div>
+  </div>
+  <h2 style="text-align: center; margin-bottom: 30px;margin-top:50px">Tourist Map Attractions @destinationcity </h2>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.3738026319794!2d144.95743221570534!3d-37.816382979751504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5772c6335123bc1!2sFederation+Square!5e0!3m2!1sen!2sau!4v1510919093301"
+    allowfullscreen>
+  </iframe>
+  <h2 style="text-align: center; margin-bottom: 30px;margin-top:50px">Online Profiles Around the World</h2>
+  <div class="slider-containerUser">
+    <button class="arrowUser left" onclick="slide(-1)">&#10094;</button>
+    <div class="sliderUser" id="sliderUser">
+
+      <div class="user-box">
+        <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
+          <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
+          <div class="profile-name">Carlos Martinez</div>
+          <div class="profile-location">Madrid, Spain</div>
+        </div>
+      </div>
+
+      <div class="user-box">
+        <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
+          <img class="profile-img" src="https://randomuser.me/api/portraits/women/12.jpg" alt="Aiko Tanaka">
+          <div class="profile-name">Aiko Tanaka</div>
+          <div class="profile-location">Tokyo, Japan</div>
+        </div>
+
+      </div>
+      <div class="user-box">
+        <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
+          <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
+          <div class="profile-name">Carlos Martinez</div>
+          <div class="profile-location">Madrid, Spain</div>
+        </div>
+      </div>
+      <div class="user-box">
+        <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
+          <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
+          <div class="profile-name">Carlos Martinez</div>
+          <div class="profile-location">Madrid, Spain</div>
+        </div>
+      </div>
+      <div class="user-box">
+        <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
+          <img class="profile-img" src="https://randomuser.me/api/portraits/women/45.jpg" alt="Jane Smith">
+          <div class="profile-name">Jane Smith</div>
+          <div class="profile-location">London, UK</div>
+        </div>
+
+      </div>
+      <div class="user-box">
+        <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
+          <img class="profile-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe">
+          <div class="profile-name">John Doe</div>
+          <div class="profile-location">New York, USA</div>
+        </div>
+      </div>
+      <div class="user-box">
+        <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
+          <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
+          <div class="profile-name">Carlos Martinez</div>
+          <div class="profile-location">Madrid, Spain</div>
+        </div>
+      </div>
+      <div class="user-box">
+        <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
+          <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
+          <div class="profile-name">Carlos Martinez</div>
+          <div class="profile-location">Madrid, Spain</div>
+        </div>
+      </div>
+      <div class="user-box">
+        <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
+          <img class="profile-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe">
+          <div class="profile-name">John Doe</div>
+          <div class="profile-location">New York, USA</div>
+        </div>
+      </div>
+      <div class="user-box">
+        <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
+          <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
+          <div class="profile-name">Carlos Martinez</div>
+          <div class="profile-location">Madrid, Spain</div>
+        </div>
+      </div>
+    </div>
+    <button class="arrowUser right" onclick="slide(1)">&#10095;</button>
+  </div>
+  <h2 style="text-align: center; margin-bottom: 30px;margin-top:50px">Premium Destinations</h2>
+  <div class="slider-container">
+    <div class="arrow arrow-left" onclick="moveSlide(-1)">&#10094;</div>
+    <div class="slider" id="slider">
+      <div class="slide"><img src="assets/blog1.jpg" alt="Image 1"></div>
+      <div class="slide"><img src="assets/blog2.jpg" alt="Image 2"></div>
+        <div class="slide"><img src="assets/blog3.jpg" alt="Image 1"></div>
+      <div class="slide"><img src="assets/Destination6.png" alt="Image 2"></div>
+      <div class="slide"><img src="assets/Destination4.png" alt="Image 3"></div>
+      <div class="slide"><img src="assets/Destination3.png" alt="Image 1"></div>
+      <div class="slide"><img src="assets/Destination2.png" alt="Image 2"></div>
+      <div class="slide"><img src="assets/Destination1.png" alt="Image 3"></div>
+    </div>
+    <div class="arrow arrow-right" onclick="moveSlide(1)">&#10095;</div>
+  </div>
+
+
+  <!-- Traveller Website Footer -->
+  <footer style="background:#0077b6; color:#fff; padding: 40px 0; font-family: 'Segoe UI', sans-serif;">
+    <div
+      style="max-width:1200px; margin:auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;">
+
+      <!-- Logo and About -->
+      <div style="flex:1; min-width:200px;">
+        <h2 style="color:white;">Traveller Clicks</h2>
+        <p>Discover top destinations, book hotels, rent cars, and plan your next journey with us. Adventure awaits!</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div style="flex:1; min-width:200px;">
+        <h3 style="color:white;">Quick Links</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="#" style="color:#ddd; text-decoration:none;">Home</a></li>
+          <li><a href="#" style="color:#ddd; text-decoration:none;">Destinations</a></li>
+          <li><a href="#" style="color:#ddd; text-decoration:none;">Hotels</a></li>
+          <li><a href="#" style="color:#ddd; text-decoration:none;">Flights</a></li>
+          <li><a href="#" style="color:#ddd; text-decoration:none;">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div style="flex:1; min-width:200px;">
+        <h3 style="color:white;">Contact</h3>
+        <p>Email: support@travellerclicks.com</p>
+        <p>Phone: +91-9942520866</p>
+        <p>Location: Ranchi, Jharkhand, India</p>
+      </div>
+
+      <!-- Newsletter Signup -->
+      <div style="flex:1; min-width:200px;">
+        <h3 style="color:white;">Newsletter</h3>
+        <p>Get travel deals & updates directly in your inbox.</p>
+        <input type="email" placeholder="Your email"
+          style="padding:10px; width:100%; margin:10px 0; border:none; border-radius:4px;">
+        <button
+          style="padding:10px; width:100%; background:white; border:none; color:#000; font-weight:bold; border-radius:4px;">Subscribe</button>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div style="text-align:center; padding:20px 0; border-top:1px solid #444; margin-top:30px;">
+      <p>&copy; 2025 Traveller Clicks. All Rights Reserved.</p>
+      <div style="margin-top:10px;">
+        <a href="#" style="color:white; margin:0 10px;">Facebook</a>
+        <a href="#" style="color:white; margin:0 10px;">Instagram</a>
+        <a href="#" style="color:white; margin:0 10px;">Twitter</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    let currentIndex = 0;
+    const slider = document.getElementById('slider');
+    const slides = document.querySelectorAll('.slide');
+
+    function moveSlide(step) {
+      currentIndex = (currentIndex + step + slides.length) % slides.length;
+      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    let sliderUser = document.getElementById('sliderUser');
+    let currentIndexUser = 0;
+
+    function slide(direction) {
+      const boxWidth = 150; // user-box width
+      const totalBoxes = sliderUser.children.length;
+      const visibleBoxes = Math.floor(document.querySelector('.slider-containerUser').offsetWidth / boxWidth);
+
+      currentIndexUser += direction;
+
+      if (currentIndexUser < 0) currentIndexUser = 0;
+      if (currentIndexUser > totalBoxes - visibleBoxes) currentIndexUser = totalBoxes - visibleBoxes;
+      sliderUser.style.transform = `translateX(-${currentIndexUser * boxWidth}px)`;
+    }
+  </script>
+</body>
+</html>
