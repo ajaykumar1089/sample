@@ -12,7 +12,8 @@
       background: #f5f5f5;
       color: #333;
     }
-.side-menu {
+
+    .side-menu {
       width: 250px;
       background: #0d6efd;
       color: white;
@@ -104,6 +105,7 @@
 
       font-size: 16px;
     }
+
     .page-container {
       display: flex;
       max-width: 1400px;
@@ -182,7 +184,7 @@
       display: flex;
       flex-direction: column;
       padding-top: 0px;
-    } 
+    }
 
     .tour-listing {
       display: grid;
@@ -232,7 +234,7 @@
 </head>
 
 <body>
-   <!-- Menu Toggle Button -->
+  <!-- Menu Toggle Button -->
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
   <!-- Side Menu -->
@@ -245,9 +247,9 @@
     <a href="#">🎫 Tickets</a>
     <a href="#">📞 Contact Us</a>
   </div>
-   <header>
+  <header>
     <div class="d-flex align-items-center">
-     <a href="index.html"><img src="assets/logo_travellerclicks - Copy.png" width="60" alt="logo" /> </a>     
+      <a href="index.html"><img src="assets/logo_travellerclicks - Copy.png" width="60" alt="logo" /> </a>
     </div>
     <div class="search-box">
       <input type="text" placeholder="Search destinations, hotels...">
@@ -335,12 +337,30 @@
 
     <!-- Main Content -->
     <div class="main-content">
-    
-    
+
+
 
       <!-- Tour Listings -->
       <div class="tour-listing">
         <div class="tour-card">
+          <div class="about-text">
+            <h2>About Digital Nomads</h2>
+            <p>Digital Nomads are remote professionals who travel the world while working online. They choose freedom
+              over routine and often work from beaches, mountains, cafés, or co-working spaces. All they need is a
+              stable internet connection and a passion for adventure.</p>
+
+            <ul class="nomad-benefits">
+              <li>🌐 Work from anywhere in the world</li>
+              <li>💻 Flexible jobs, remote teams, and passive income</li>
+              <li>🏡 Stay in unique homestays or co-living spaces</li>
+              <li>✈️ Travel while you earn</li>
+              <li>👥 Join global digital nomad communities</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="tour-listing">
+        <div class="tour-card">
           <a href="JoinTravellersGroup.html">
             <img src="https://picsum.photos/id/1015/600/400" alt="Tour 1">
             <div class="info">
@@ -363,7 +383,9 @@
                 </ul>
               </div>
             </section>
-            Join Me
+            <a href="PlanDetails.html" class="text-indigo-600 font-semibold hover:underline">
+              View Plans
+            </a>
           </a>
         </div>
 
@@ -390,7 +412,9 @@
                 </ul>
               </div>
             </section>
-            Join Me
+            <a href="PlanDetails.html" class="text-indigo-600 font-semibold hover:underline">
+              View Plans
+            </a>
           </a>
         </div>
 
@@ -417,7 +441,9 @@
                 </ul>
               </div>
             </section>
-            Join Me
+            <a href="PlanDetails.html" class="text-indigo-600 font-semibold hover:underline">
+              View Plans
+            </a>
           </a>
         </div>
       </div>
@@ -445,7 +471,9 @@
                 </ul>
               </div>
             </section>
-            Join Me
+            <a href="PlanDetails.html" class="text-indigo-600 font-semibold hover:underline">
+              View Plans
+            </a>
           </a>
         </div>
 
@@ -472,7 +500,9 @@
                 </ul>
               </div>
             </section>
-            Join Me
+            <a href="PlanDetails.html" class="text-indigo-600 font-semibold hover:underline">
+              View Plans
+            </a>
           </a>
         </div>
 
@@ -499,95 +529,13 @@
                 </ul>
               </div>
             </section>
-            Join Me
-          </a>
-        </div>
-      </div>
-      <div class="tour-listing">
-        <div class="tour-card">
-          <a href="JoinTravellersGroup.html">
-            <img src="https://picsum.photos/id/1015/600/400" alt="Tour 1">
-            <div class="info">
-              <h4>Best of Germany Tour</h4>
-              <div class="meta">12 Days · Max 30 People</div>
-              <div class="price">From $2,540</div>
-            </div>
-            <section class="map-list-section">
-              <div class="map-container">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.3738026319794!2d144.95743221570534!3d-37.816382979751504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5772c6335123bc1!2sFederation+Square!5e0!3m2!1sen!2sau!4v1510919093301"
-                  allowfullscreen>
-                </iframe>
-              </div>
-              <div class="tour-list">
-                <ul>
-                  <li><strong>Europe Highlights</strong><br>Berlin → Dresden → Munich → Frankfurt</li>
-                  <li><strong>Best of Germany</strong><br>Berlin → Hamburg → Cologne → Rothenburg</li>
-                  <li><strong>Bavarian Alps Adventure</strong><br>Munich → Füssen → Garmisch → Berchtesgaden</li>
-                </ul>
-              </div>
-            </section>
-            Join Me
-          </a>
-        </div>
-
-        <div class="tour-card">
-          <a href="JoinTravellersGroup.html">
-            <img src="https://picsum.photos/id/1021/600/400" alt="Tour 2">
-            <div class="info">
-              <h4>Bavarian Alps Adventure</h4>
-              <div class="meta">8 Days · Max 25 People</div>
-              <div class="price">From $1,870</div>
-            </div>
-            <section class="map-list-section">
-              <div class="map-container">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.3738026319794!2d144.95743221570534!3d-37.816382979751504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5772c6335123bc1!2sFederation+Square!5e0!3m2!1sen!2sau!4v1510919093301"
-                  allowfullscreen>
-                </iframe>
-              </div>
-              <div class="tour-list">
-                <ul>
-                  <li><strong>Europe Highlights</strong><br>Berlin → Dresden → Munich → Frankfurt</li>
-                  <li><strong>Best of Germany</strong><br>Berlin → Hamburg → Cologne → Rothenburg</li>
-                  <li><strong>Bavarian Alps Adventure</strong><br>Munich → Füssen → Garmisch → Berchtesgaden</li>
-                </ul>
-              </div>
-            </section>
-            Join Me
-          </a>
-        </div>
-
-        <div class="tour-card">
-          <a href="JoinTravellersGroup.html">
-            <img src="https://picsum.photos/id/1015/600/400" alt="Tour 1">
-            <div class="info">
-              <h4>Best of Germany Tour</h4>
-              <div class="meta">12 Days · Max 30 People</div>
-              <div class="price">From $2,540</div>
-            </div>
-            <section class="map-list-section">
-              <div class="map-container">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.3738026319794!2d144.95743221570534!3d-37.816382979751504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5772c6335123bc1!2sFederation+Square!5e0!3m2!1sen!2sau!4v1510919093301"
-                  allowfullscreen>
-                </iframe>
-              </div>
-              <div class="tour-list">
-                <ul>
-                  <li><strong>Europe Highlights</strong><br>Berlin → Dresden → Munich → Frankfurt</li>
-                  <li><strong>Best of Germany</strong><br>Berlin → Hamburg → Cologne → Rothenburg</li>
-                  <li><strong>Bavarian Alps Adventure</strong><br>Munich → Füssen → Garmisch → Berchtesgaden</li>
-                </ul>
-              </div>
-            </section>
-            Join Me
+            <a href="PlanDetails.html" class="text-indigo-600 font-semibold hover:underline">
+              View Plans
+            </a>
           </a>
         </div>
       </div>
     </div>
   </div>
-
 </body>
-
 </html>
