@@ -1,0 +1,295 @@
+// calculate the cookie domain before the klaro config declaration
+// because the config only allows static values instead of a callback to calculate the domain on initialisation
+// the calculation is required in order to keep supporting localhost for development
+var klaroCookieDomain = null;
+if (window.location.hostname) {
+  // get the parts of the current domain (separated by ".") and take the last two parts
+  const relevantParts = (window.location.hostname || '')
+    .split('.')
+    .reverse()
+    .slice(0, 2);
+
+  // join the relevant parts of the domain back in the correct order
+  // and prefix with "." to include all subdomains if current domain is not localhost
+  klaroCookieDomain =
+    (relevantParts.length > 1 ? '.' : '') + relevantParts.reverse().join('.');
+}
+
+// By default, Klaro will load the config from  a global "klaroConfig" variable.
+// You can change this by specifying the "data-config" attribute on your
+// script take, e.g. like this:
+// <script src="klaro.js" data-config="myConfigVariableName" />
+// You can also disable auto-loading of the consent notice by adding
+// data-no-auto-load=true to the script tag.
+var klaroConfig = {
+  // You can customize the ID of the DIV element that Klaro will create
+  // when starting up. If undefined, Klaro will use 'klaro'.
+  elementID: 'klaro',
+
+  // You can customize the name of the cookie that Klaro uses for storing
+  // user consent decisions. If undefined, Klaro will use 'klaro'.
+  cookieName: 'klaro',
+
+  // If set to `true`, Klaro will render the texts given in the
+  // `consentModal.description` and `consentNotice.description` translations as HTML.
+  // This enables you to e.g. add custom links or interactive content.
+  htmlTexts: true,
+
+  // You can change the cookie domain for the consent manager itself. Use this if you
+  // want to get consent once for multiple matching domains. By default, Klaro will
+  // use the current domain. Only relevant if 'storageMethod' is set to 'cookie'.
+  cookieDomain: klaroCookieDomain,
+
+  // You can also set a custom expiration time for the Klaro cookie.
+  // By default, it will expire after 120 days.
+  cookieExpiresAfterDays: 365,
+
+  // You can customize the name of the cookie that Klaro will use to
+  // store user consent. If undefined, Klaro will use 'klaro'.
+
+  // Put a link to your privacy policy here (relative or absolute).
+  privacyPolicy: {
+    default: 'https://www.joinmytrip.com/en/legal/privacy-statement',
+    en: 'https://www.joinmytrip.com/en/legal/privacy-statement',
+    de: 'https://www.joinmytrip.com/de/legal/privacy-statement'
+  },
+
+  // Defines the default state for applications (true=enabled by default).
+  default: true,
+
+  // If "mustConsent" is set to true, Klaro will directly display the consent
+  // manager modal and not allow the user to close it before having actively
+  // consented or declines the use of third-party apps.
+  mustConsent: false,
+
+  groupByPurpose: false,
+
+  // You can define the UI language directly here. If undefined, Klaro will
+  // use the value given in the global "lang" variable. If that does
+  // not exist, it will use the value given in the "lang" attribute of your
+  // HTML tag. If that also doesn't exist, it will use 'en'.
+  //lang: 'en',
+
+  // You can overwrite existing translations and add translations for your
+  // app descriptions and purposes. See `src/translations.yml` for a full
+  // list of translations that can be overwritten:
+  // https://github.com/DPKit/klaro/blob/master/src/translations.yml
+
+  // Example config that shows how to overwrite translations:
+  // https://github.com/DPKit/klaro/blob/master/src/configs/i18n.js
+  translations: {
+    // If you erase the "consentModal" translations, Klaro will use the
+    // defaults as defined in translations.yml
+    de: {
+      ok: 'Akzeptieren',
+      close: 'Schließen',
+      consentNotice: {
+        // changeDescription: 'DE consentNotice.changeDescription',
+        description:
+          `<p class="header">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.98 27.5C8.09 27.492 2.507 21.9 2.5 15c.491.139 1 .21 1.51.211a5.125 5.125 0 0 0 4.242-2.196A4.551 4.551 0 0 0 8.74 8.75c.359.064.721.096 1.085.098a5.321 5.321 0 0 0 5.203-4.04A5.207 5.207 0 0 0 15.06 2.5c6.893.022 12.462 5.637 12.438 12.54-.021 6.904-5.627 12.483-12.519 12.46zm.951-4.29a1.56 1.56 0 1 0 .99-2.95 1.562 1.562 0 0 0-.989 2.95zM8.64 21.094a2.08 2.08 0 0 0 2.515-3.087 2.086 2.086 0 0 0-1.726-.926 2.084 2.084 0 0 0-1.735 3.235c.225.341.545.61.921.77h.02l.005.008zm11.77-3.134a2.078 2.078 0 0 0 2.863-2.207 2.086 2.086 0 0 0-1.965-1.795 2.078 2.078 0 0 0-2.174 2.14 2.083 2.083 0 0 0 1.178 1.822h-.015l.038.016.025.01h-.008a.52.52 0 0 1 .053.02l.005-.006zm-5.43-5.044a1.04 1.04 0 1 0 .404.083l-.023-.01-.034-.013c-.111-.04-.229-.06-.347-.06zm4.68-5.207a1.558 1.558 0 0 0-.317 3.082 1.56 1.56 0 0 0 .923-2.957h-.012a1.55 1.55 0 0 0-.594-.125zM5.62 11.875a1.041 1.041 0 1 1 .002-2.082 1.041 1.041 0 0 1-.002 2.082zM4.06 8.75a1.561 1.561 0 1 1 .002-3.122A1.561 1.561 0 0 1 4.06 8.75zm6.24-2.084a1.562 1.562 0 1 1 .002-3.127 1.562 1.562 0 0 1-.002 3.129v-.002zM6.661 4.584a1.04 1.04 0 1 1 0-2.082 1.04 1.04 0 0 1 0 2.082z" fill="url(#sev9mp7toa)"/>
+              <defs>
+                  <linearGradient id="sev9mp7toa" x1="2.5" y1="15" x2="27.499" y2="15" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#2F53FF"/>
+                      <stop offset="1" stop-color="#8C1AEC"/>
+                  </linearGradient>
+              </defs>
+            </svg>
+            <b>Cookies bei JoinMyTrip</b>
+          </p>
+          <p>Wir verwenden einige Cookies von Drittanbietern oder ähnliches, um deine Erfahrungen zu verbessern, die Plattform oder Inhalte zu personalisieren und die Leistung der Dienste zu messen. Klicke auf "Akzeptieren", um zuzustimmen, oder verwalte Deine Einstellungen</p>`,
+        learnMore: 'Einstellungen verwalten'
+      },
+      consentModal: {
+        title: 'Deine Privatsphäre',
+        description:
+          'Da wir Dein Recht auf Privatsphäre respektieren, sind wir transparent und geben Dir die Möglichkeit, sich für oder gegen alles zu entscheiden, was Du möchtest. Bitte beachte, dass das Blockieren bestimmter Cookies Deine Erfahrung mit unserer Website und den von uns angebotenen Dienstleistungen beeinträchtigen kann. JoinMyTrip oder Dritte verwenden Cookies, um Deine Erfahrungen zu personalisieren und/oder zu messen. Dies hilft uns, die Plattform zu optimieren. Dies kann die Verwendung von gesammelten Datenpunkten, die Messung, die Aktivität, die gemeinsame Nutzung, die Speicherung und die Nachverfolgung mit diesen Cookies beinhalten, ist aber nicht darauf beschränkt.'
+      },
+      privacyPolicy: {
+        name: 'Datenschutzerklärung',
+        text:
+          'Weitere Informationen findest Du in unserer <a href="https://www.joinmytrip.com/de/legal/privacy-statement" target="_blank">Datenschutzerklärung</a>.'
+      },
+      purposes: {
+        performance: 'Optimierung der Leistung',
+        analytics: 'Analytics',
+        advertising: 'Personalisiertes Marketing'
+      },
+      service: {
+        disableAll: {
+          title: 'Alle Cookies aktivieren oder deaktivieren',
+          description:
+            'Verwende diesen Schalter, um alle optionalen Cookies zu aktivieren/deaktivieren.'
+        },
+        purpose: 'Zweck',
+        purposes: 'Zwecke'
+      }
+    },
+    en: {
+      ok: 'Accept',
+      decline: 'Decline',
+      close: 'Close',
+      consentNotice: {
+        // changeDescription: 'EN consentNotice.changeDescription',
+        description:
+          `<p class="header"> 
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.98 27.5C8.09 27.492 2.507 21.9 2.5 15c.491.139 1 .21 1.51.211a5.125 5.125 0 0 0 4.242-2.196A4.551 4.551 0 0 0 8.74 8.75c.359.064.721.096 1.085.098a5.321 5.321 0 0 0 5.203-4.04A5.207 5.207 0 0 0 15.06 2.5c6.893.022 12.462 5.637 12.438 12.54-.021 6.904-5.627 12.483-12.519 12.46zm.951-4.29a1.56 1.56 0 1 0 .99-2.95 1.562 1.562 0 0 0-.989 2.95zM8.64 21.094a2.08 2.08 0 0 0 2.515-3.087 2.086 2.086 0 0 0-1.726-.926 2.084 2.084 0 0 0-1.735 3.235c.225.341.545.61.921.77h.02l.005.008zm11.77-3.134a2.078 2.078 0 0 0 2.863-2.207 2.086 2.086 0 0 0-1.965-1.795 2.078 2.078 0 0 0-2.174 2.14 2.083 2.083 0 0 0 1.178 1.822h-.015l.038.016.025.01h-.008a.52.52 0 0 1 .053.02l.005-.006zm-5.43-5.044a1.04 1.04 0 1 0 .404.083l-.023-.01-.034-.013c-.111-.04-.229-.06-.347-.06zm4.68-5.207a1.558 1.558 0 0 0-.317 3.082 1.56 1.56 0 0 0 .923-2.957h-.012a1.55 1.55 0 0 0-.594-.125zM5.62 11.875a1.041 1.041 0 1 1 .002-2.082 1.041 1.041 0 0 1-.002 2.082zM4.06 8.75a1.561 1.561 0 1 1 .002-3.122A1.561 1.561 0 0 1 4.06 8.75zm6.24-2.084a1.562 1.562 0 1 1 .002-3.127 1.562 1.562 0 0 1-.002 3.129v-.002zM6.661 4.584a1.04 1.04 0 1 1 0-2.082 1.04 1.04 0 0 1 0 2.082z" fill="url(#sev9mp7toa)"/>
+            <defs>
+                <linearGradient id="sev9mp7toa" x1="2.5" y1="15" x2="27.499" y2="15" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#2F53FF"/>
+                    <stop offset="1" stop-color="#8C1AEC"/>
+                </linearGradient>
+            </defs>
+            </svg>
+            <b>Cookies on JoinMyTrip</b>
+          </p>
+        <p>We use some third party cookies or similar to improve experience, personalize the platform or content, and measure performance of services. Click ‘Accept’ to agree, or manage your settings</p>`,
+        learnMore: 'Manage settings'
+      },
+      consentModal: {
+        title: 'Your privacy',
+        description:
+          'Because we respect your right to privacy, we are transparent and give you the option to opt in or out to whatever you wish. Please be aware that blocking certain cookies may impact your experience of the site and the services we are able to offer. JoinMyTrip or third parties use cookies to personalized and/or measure your experience, this helps us optimise the platform. This may include but not limit its use to apply collected data points, measure, activity, shared, stored, and track using these cookies.'
+      },
+      privacyPolicy: {
+        name: 'Privacy Policy',
+        text:
+          'For more information, please read our <a href="https://www.joinmytrip.com/en/legal/privacy-statement" target="_blank">Privacy Policy</a>.'
+      },
+      purposes: {
+        performance: 'Performance Optimization',
+        analytics: 'Analytics',
+        advertising: 'Advertising'
+      },
+      service: {
+        disableAll: {
+          title: 'Enable or disable all cookies',
+          description: 'Use this switch to enable/disable all optional cookies.'
+        },
+        purpose: 'Purpose',
+        purposes: 'Purposes'
+      }
+    }
+  },
+
+  // This is a list of third-party services that Klaro will manage for you.
+  services: [
+    // performance services
+    {
+      name: 'performance',
+      purposes: ['performance'],
+      required: true,
+
+      translations: {
+        en: {
+          title: 'Service Provision',
+          description:
+            '<p>These services are essential for our platform to function correctly, and cannot be switched off in our systems. They may help the platform function, so if blocked, some parts of our site may not work properly.</p><p><a href="https://www.joinmytrip.com/en/legal/privacy-statement" target="_blank">More Information</a></p>'
+        },
+        de: {
+          title: 'Servicebereitstellung',
+          description:
+            '<p>Diese Dienste sind für die korrekte Funktion unserer Plattform unerlässlich und können in unseren Systemen nicht abgeschaltet werden. Sie unterstützen die Funktion der Plattform. Wenn sie blockiert sind, funktionieren einige Teile unserer Website möglicherweise nicht richtig.</p><p><a href="https://www.joinmytrip.com/de/legal/privacy-statement" target="_blank">Mehr Informationen</a></p>'
+        }
+      },
+
+      callback: function(consent, app) {
+        // Google Tag-Manager
+        document.cookie =
+          'gtm-opt-in-performance=' +
+          !!consent +
+          '; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/; SameSite=Lax' +
+          (klaroCookieDomain ? '; domain=' + klaroCookieDomain : '');
+      }
+    },
+
+    // analytics services
+    {
+      name: 'analytics',
+      purposes: ['analytics'],
+      default: true,
+
+      translations: {
+        en: {
+          title: 'Performance Optimization',
+          description:
+            '<p>Used to enhance the performance and functionality of our platform. This helps to review/measure pages & features so we can continue to improve our services.</p><p><a href="https://www.joinmytrip.com/en/legal/privacy-statement" target="_blank">More Information</a></p>'
+        },
+        de: {
+          title: 'Performance-Optimierung',
+          description:
+            '<p>Wird verwendet, um die Leistung und Funktionalität unserer Plattform zu verbessern. Dies hilft bei der Überprüfung/Messung von Seiten und Funktionen, damit wir unsere Dienste weiter verbessern können.</p><p><a href="https://www.joinmytrip.com/de/legal/privacy-statement" target="_blank">Mehr Informationen</a></p>'
+        }
+      },
+
+      callback: function(consent, app) {
+        // Google Tag-Manager
+        document.cookie =
+          'gtm-opt-in-analytics=' +
+          !!consent +
+          '; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/; SameSite=Lax' +
+          (klaroCookieDomain ? '; domain=' + klaroCookieDomain : '');
+
+        // Google Analytics
+        document.cookie =
+          'gtm-opt-in-ga=' +
+          !!consent +
+          '; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/; SameSite=Lax' +
+          (klaroCookieDomain ? '; domain=' + klaroCookieDomain : '');
+
+        // utm parameter for signup
+        window['UTM_OPTIN'] = consent;
+        if (consent) {
+          if (window['UTM_STORE_PARAMETER']) {
+            window['UTM_STORE_PARAMETER']();
+          }
+        }
+      }
+    },
+
+    // advertising services
+    {
+      name: 'advertising',
+      purposes: ['advertising'],
+      default: true,
+
+      translations: {
+        zz: {
+          title: 'Bing'
+        },
+        en: {
+          title: 'Personalised Marketing',
+          description:
+            '<p>These cookies help us to make advertising messages more relevant to your interests. Without them, you will still see our advertisements, but they may be uninteresting. Without this selected, some discounts or coupons may not work.</p><p><a href="https://www.joinmytrip.com/en/legal/privacy-statement" target="_blank">More Information</a></p>'
+        },
+        de: {
+          title: 'Personalisiertes Marketing',
+          description:
+            '<p>Diese Cookies helfen uns, Werbebotschaften besser auf Deine Interessen abzustimmen. Ohne diese siehst Du zwar immer noch unsere Werbung, aber sie könnte nicht mehr interessant sein. Ohne diese Auswahl funktionieren einige Rabatte oder Gutscheine möglicherweise nicht.</p><p><a href="https://www.joinmytrip.com/de/legal/privacy-statement" target="_blank">Mehr Informationen</a></p>'
+        }
+      },
+
+      callback: function(consent, app) {
+        // Google Tag-Manager
+        document.cookie =
+          'gtm-opt-in-advertising=' +
+          !!consent +
+          '; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/; SameSite=Lax' +
+          (klaroCookieDomain ? '; domain=' + klaroCookieDomain : '');
+
+        // ga-advertising
+        if (consent) {
+          if (typeof ga !== 'undefined') {
+            ga('set', 'allowAdFeatures', true);
+          }
+        } else {
+          if (typeof ga !== 'undefined') {
+            ga('set', 'allowAdFeatures', false);
+          }
+        }
+      }
+    }
+  ]
+};
