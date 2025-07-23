@@ -1,0 +1,65 @@
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background: #fafafa;
+  color: #333;
+}
+.hero {
+  background: url('../images/diary1.jpg') no-repeat center center/cover;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  color: white;
+  text-align: center;
+}
+.overlay h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+.overlay p {
+  font-style: italic;
+}
+.intro {
+  text-align: center;
+  padding: 2rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+.diary {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.diary img {
+  width: 100%;
+  display: block;
+}
+.content {
+  padding: 1rem;
+}
+.content h3 {
+  margin-top: 0;
+  color: #0077cc;
+}
+.content span {
+  font-size: 0.85rem;
+  color: #666;
+}
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #0077cc;
+  color: white;
+}

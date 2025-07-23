@@ -433,7 +433,7 @@
     </div>
     <div class="nav-buttons">
       <a href="TravellesrGroupListings.html">Join Travellers Group</a>
-      <a href="#">Plan My Full Trip</a>
+      <a href="FullTripPlanner.html">Plan My Full Trip</a>
       <a href="Stories.html">Stories</a>
       <a href="DigitalNomadsDestinationsListings.html">Digital Nomads</a>
       <a href="#" class="btn btn-primary btn-sm">Login</a>
@@ -441,202 +441,7 @@
   </header>
   <!-- Main Content -->
   <div class="main-content container">
-    <div class="booking-form">
-      <div class="places">
-        <div class="place-card">
-          <!-- CamperVan icon animated traveller in  <i  element html -->
-          <i class="fas fa-shuttle-van campervan-icon"></i>
-          <!-- <img src="assets/campervan.png" alt="Flight Icon" style="width: 50px; height: 50px;"> -->
-          <h3>Camper Van</h3>
-        </div>
-
-        <div class="place-card">
-          <i class="fas fa-hotel"></i>
-          <h3>Hotels & Home Stays</h3>
-        </div>
-        <div class="place-card">
-          <i class="fas fa-car"></i>
-          <h3>Rented Cars</h3>
-        </div>
-        <div class="place-card">
-          <i class="fas fa-motorcycle"></i>
-          <h3>Scooty</h3>
-        </div>
-
-        <div class="place-card">
-          <!-- Tourist Guide Icon -->
-          <i class="fas fa-user-tie guide-icon" title="Hire Tourist Guide"></i>
-          <h3>Hire Trip Coach</h3>
-        </div>
-
-        <div class="place-card">
-          <i class="fas fa-person traveller-icon">
-            <i class="fas fa-camera camera-bag"></i>
-          </i>
-          <h3>Hire Photographer</h3>
-        </div>
-        <div class="place-card">
-          <i class="fas fa-ship"></i>
-          <h3>Boat & Ferries</h3>
-        </div>
-
-        <div class="place-card">
-          <i class="fas fa-ticket-alt"></i>
-          <h3>Tickets & Events</h3>
-        </div>
-
-        <div class="place-card">
-          <i class="fas fa-money-bill-wave"></i> <!-- Money -->
-          <i class="fas fa-right-left"></i> <!-- Exchange -->
-          <h3>Forex Exchange</h3>
-        </div>      
-        <div class="place-card">
-          <i class="fas fa-map-marked-alt"></i> <!-- Tourist Map Icon -->
-          <h3>Tourist Map</h3>
-        </div>
-
-
-      </div>
-      <div class="booking-form">
-        <div class="places">
-
-          <div class="trip-type">
-            <label><input type="radio" name="tripType" value="oneway" checked> One Way</label>
-            <label><input type="radio" name="tripType" value="roundtrip"> Round Trip</label>
-          </div>
-
-          <div class="form-group">
-            <label for="from">From Location</label>
-            <input type="text" id="from" name="from" placeholder="City or Airport">
-          </div>
-
-          <div class="form-group">
-            <label for="to">To Location</label>
-            <input type="text" id="to" name="to" placeholder="City or Airport">
-          </div>
-
-          <div class="form-group">
-            <label for="departure">Departure Date</label>
-            <input type="date" id="departure" name="departure">
-          </div>
-
-          <div class="form-group" id="returnDateGroup" style="display: none;">
-            <label for="return">Return Date</label>
-            <input type="date" id="return" name="return">
-          </div>
-
-          <div class="form-group">
-            <label for="travellers">Travellers</label>
-            <input type="number" id="travellers" name="travellers" min="1" value="1">
-          </div>
-
-          <button class="submit-btn">Search</button>
-        </div>
-      </div>
-    </div>
-
-    <h2 style="text-align: center; margin-bottom: 30px;margin-top:15px">Top Rated Tourist Attractions, Home Stays, Traveller Groups, Best Local Cuisines, Route Map@destinationcity </h2>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.3738026319794!2d144.95743221570534!3d-37.816382979751504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5772c6335123bc1!2sFederation+Square!5e0!3m2!1sen!2sau!4v1510919093301"
-      allowfullscreen>
-    </iframe>
-
-
-    <h2 style="text-align: center; margin-bottom: 30px;margin-top:50px">Online Profiles Around the World</h2>
-    <div class="slider-containerUser">
-      <button class="arrowUser left" onclick="slide(-1)">&#10094;</button>
-      <div class="sliderUser" id="sliderUser">
-
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
-            <div class="profile-name">Carlos Martinez</div>
-            <div class="profile-location">Madrid, Spain<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/women/12.jpg" alt="Aiko Tanaka">
-            <div class="profile-name">Aiko Tanaka</div>
-            <div class="profile-location">Tokyo, Japan<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
-            <div class="profile-name">Carlos Martinez</div>
-            <div class="profile-location">Madrid, Spain<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
-            <div class="profile-name">Carlos Martinez</div>
-            <div class="profile-location">Madrid, Spain<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/women/45.jpg" alt="Jane Smith">
-            <div class="profile-name">Jane Smith</div>
-            <div class="profile-location">London, UK<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe">
-            <div class="profile-name">John Doe</div>
-            <div class="profile-location">New York, USA<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
-            <div class="profile-name">Carlos Martinez</div>
-            <div class="profile-location">Madrid, Spain<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
-            <div class="profile-name">Carlos Martinez</div>
-            <div class="profile-location">Madrid, Spain<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe">
-            <div class="profile-name">John Doe</div>
-            <div class="profile-location">New York, USA<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
-            <div class="profile-name">Carlos Martinez</div>
-            <div class="profile-location">Madrid, Spain<nav>
-                <div class="nav-buttons"><a> View Story</a></div>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="arrowUser right" onclick="slide(1)">&#10095;</button>
-    </div>
-
-  </div>
+    </div>  
   <h2 style="text-align: center; margin-bottom: 30px;margin-top:50px">Premium Destinations</h2>
   <div class="slider-container">
     <div class="arrow arrow-left" onclick="moveSlide(-1)">&#10094;</div>
@@ -652,6 +457,9 @@
     </div>
     <div class="arrow arrow-right" onclick="moveSlide(1)">&#10095;</div>
   </div>
+
+
+
 
 
   <!-- Traveller Website Footer -->

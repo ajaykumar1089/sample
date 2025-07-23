@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>World Travel Stories</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+  <header>
+    <h1>🌍 Amazing Travel Stories</h1>
+    <p>Explore 10 inspiring journeys with videos, photos, and maps!</p>
+  </header>
+
+  <div id="map" class="map-container"></div>
+
+  <section class="stories">
+    
+    <article class="story">
+      <img src="assets/images/story1.jpg" alt="Paris, France">
+      <div class="content">
+        <h3>Love Under the Eiffel</h3>
+        <p><strong>Location:</strong> Paris, France</p>
+      </div>
+    </article>
+    
+    <article class="story">
+      <img src="assets/images/story2.jpg" alt="Kyoto, Japan">
+      <div class="content">
+        <h3>Zen in Bamboo Forests</h3>
+        <p><strong>Location:</strong> Kyoto, Japan</p>
+      </div>
+    </article>
+    
+    <article class="story">
+      <img src="assets/images/story3.jpg" alt="New York, USA">
+      <div class="content">
+        <h3>Skyscraper Dreams</h3>
+        <p><strong>Location:</strong> New York, USA</p>
+      </div>
+    </article>
+    
+    <article class="story">
+      <img src="assets/images/story4.jpg" alt="Cape Town, SA">
+      <div class="content">
+        <h3>Table Mountain Magic</h3>
+        <p><strong>Location:</strong> Cape Town, SA</p>
+      </div>
+    </article>
+    
+    <article class="story">
+      <img src="assets/images/story5.jpg" alt="Peru">
+      <div class="content">
+        <h3>Machu Picchu Mysteries</h3>
+        <p><strong>Location:</strong> Peru</p>
+      </div>
+    </article>
+    
+    <article class="story">
+      <img src="assets/images/story6.jpg" alt="Rome, Italy">
+      <div class="content">
+        <h3>Walking with Gladiators</h3>
+        <p><strong>Location:</strong> Rome, Italy</p>
+      </div>
+    </article>
+    
+    <article class="story">
+      <img src="assets/images/story7.jpg" alt="Sydney, Australia">
+      <div class="content">
+        <h3>Opera by the Sea</h3>
+        <p><strong>Location:</strong> Sydney, Australia</p>
+      </div>
+    </article>
+    
+    <article class="story">
+      <img src="assets/images/story8.jpg" alt="Iceland">
+      <div class="content">
+        <h3>Northern Light Nights</h3>
+        <p><strong>Location:</strong> Iceland</p>
+      </div>
+    </article>
+    
+    <article class="story">
+      <img src="assets/images/story9.jpg" alt="Petra, Jordan">
+      <div class="content">
+        <h3>Stone Secrets</h3>
+        <p><strong>Location:</strong> Petra, Jordan</p>
+      </div>
+    </article>
+    
+    <article class="story">
+      <img src="assets/images/story10.jpg" alt="Banff, Canada">
+      <div class="content">
+        <h3>Lakes & Legends</h3>
+        <p><strong>Location:</strong> Banff, Canada</p>
+      </div>
+    </article>
+    
+  </section>
+
+  <footer>
+    <p>&copy; 2025 TravellerClicks. Discover & share the world one story at a time.</p>
+  </footer>
+
+  <script>
+    function initMap() {
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 2,
+        center: { lat: 20, lng: 0 },
+      });
+
+      const locations = [{"title": "Paris, France", "coords": {"lat": 48.8566, "lng": 2.3522}}, {"title": "Kyoto, Japan", "coords": {"lat": 35.0116, "lng": 135.7681}}, {"title": "New York, USA", "coords": {"lat": 40.7128, "lng": -74.006}}, {"title": "Cape Town, SA", "coords": {"lat": -33.9249, "lng": 18.4241}}, {"title": "Peru", "coords": {"lat": -13.1631, "lng": -72.545}}, {"title": "Rome, Italy", "coords": {"lat": 41.9028, "lng": 12.4964}}, {"title": "Sydney, Australia", "coords": {"lat": -33.8688, "lng": 151.2093}}, {"title": "Iceland", "coords": {"lat": 64.9631, "lng": -19.0208}}, {"title": "Petra, Jordan", "coords": {"lat": 30.3285, "lng": 35.4444}}, {"title": "Banff, Canada", "coords": {"lat": 51.1784, "lng": -115.5708}}];
+
+      locations.forEach(loc => {
+        new google.maps.Marker({
+          position: loc.coords,
+          map,
+          title: loc.title
+        });
+      });
+    }
+  </script>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+  </script>
+</body>
+</html>

@@ -433,7 +433,7 @@
     </div>
     <div class="nav-buttons">
       <a href="TravellesrGroupListings.html">Join Travellers Group</a>
-      <a href="#">Plan My Full Trip</a>
+      <a href="FullTripPlanner.html">Plan My Full Trip</a>
       <a href="Stories.html">Stories</a>
       <a href="DigitalNomadsDestinationsListings.html">Digital Nomads</a>
       <a href="#" class="btn btn-primary btn-sm">Login</a>
@@ -441,202 +441,135 @@
   </header>
   <!-- Main Content -->
   <div class="main-content container">
-    <div class="booking-form">
-      <div class="places">
-        <div class="place-card">
-          <!-- CamperVan icon animated traveller in  <i  element html -->
-          <i class="fas fa-shuttle-van campervan-icon"></i>
-          <!-- <img src="assets/campervan.png" alt="Flight Icon" style="width: 50px; height: 50px;"> -->
-          <h3>Camper Van</h3>
-        </div>
-
-        <div class="place-card">
-          <i class="fas fa-hotel"></i>
-          <h3>Hotels & Home Stays</h3>
-        </div>
-        <div class="place-card">
-          <i class="fas fa-car"></i>
-          <h3>Rented Cars</h3>
-        </div>
-        <div class="place-card">
-          <i class="fas fa-motorcycle"></i>
-          <h3>Scooty</h3>
-        </div>
-
-        <div class="place-card">
-          <!-- Tourist Guide Icon -->
-          <i class="fas fa-user-tie guide-icon" title="Hire Tourist Guide"></i>
-          <h3>Hire Trip Coach</h3>
-        </div>
-
-        <div class="place-card">
-          <i class="fas fa-person traveller-icon">
-            <i class="fas fa-camera camera-bag"></i>
-          </i>
-          <h3>Hire Photographer</h3>
-        </div>
-        <div class="place-card">
-          <i class="fas fa-ship"></i>
-          <h3>Boat & Ferries</h3>
-        </div>
-
-        <div class="place-card">
-          <i class="fas fa-ticket-alt"></i>
-          <h3>Tickets & Events</h3>
-        </div>
-
-        <div class="place-card">
-          <i class="fas fa-money-bill-wave"></i> <!-- Money -->
-          <i class="fas fa-right-left"></i> <!-- Exchange -->
-          <h3>Forex Exchange</h3>
-        </div>      
-        <div class="place-card">
-          <i class="fas fa-map-marked-alt"></i> <!-- Tourist Map Icon -->
-          <h3>Tourist Map</h3>
-        </div>
-
-
-      </div>
-      <div class="booking-form">
-        <div class="places">
-
-          <div class="trip-type">
-            <label><input type="radio" name="tripType" value="oneway" checked> One Way</label>
-            <label><input type="radio" name="tripType" value="roundtrip"> Round Trip</label>
-          </div>
-
-          <div class="form-group">
-            <label for="from">From Location</label>
-            <input type="text" id="from" name="from" placeholder="City or Airport">
-          </div>
-
-          <div class="form-group">
-            <label for="to">To Location</label>
-            <input type="text" id="to" name="to" placeholder="City or Airport">
-          </div>
-
-          <div class="form-group">
-            <label for="departure">Departure Date</label>
-            <input type="date" id="departure" name="departure">
-          </div>
-
-          <div class="form-group" id="returnDateGroup" style="display: none;">
-            <label for="return">Return Date</label>
-            <input type="date" id="return" name="return">
-          </div>
-
-          <div class="form-group">
-            <label for="travellers">Travellers</label>
-            <input type="number" id="travellers" name="travellers" min="1" value="1">
-          </div>
-
-          <button class="submit-btn">Search</button>
-        </div>
-      </div>
-    </div>
-
-    <h2 style="text-align: center; margin-bottom: 30px;margin-top:15px">Top Rated Tourist Attractions, Home Stays, Traveller Groups, Best Local Cuisines, Route Map@destinationcity </h2>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.3738026319794!2d144.95743221570534!3d-37.816382979751504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5772c6335123bc1!2sFederation+Square!5e0!3m2!1sen!2sau!4v1510919093301"
-      allowfullscreen>
+     <section>
+    <h2>Overview</h2>
+    <ul>
+      <li>Total countries offering visas: up to 66 (Europe, Latin America, Caribbean, Asia, Africa) :</li>
+      <li>Typical stay duration: 6 months to 2 years, with renewals available :</li>
+      <li>Common requirements: proof of remote income, health insurance, clean criminal record, and verified accommodation :</li>
+    <div class="map-container">
+    <h2>Top Destinations & Their Visa Requirements</h2>
+      <!-- Replace the src URL with your own location or custom map with marker & popup -->
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019997222935!2d-122.41941508468167!3d37.77492927975986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c4fef9e29%3A0x189b65a19de40ef9!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1622222233444!5m2!1sen!2sus" 
+      allowfullscreen="" 
+      loading="lazy">
     </iframe>
+  </div>
+    </ul>
+  </section>
 
+  <section>
+    
 
-    <h2 style="text-align: center; margin-bottom: 30px;margin-top:50px">Online Profiles Around the World</h2>
-    <div class="slider-containerUser">
-      <button class="arrowUser left" onclick="slide(-1)">&#10094;</button>
-      <div class="sliderUser" id="sliderUser">
-
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
-            <div class="profile-name">Carlos Martinez</div>
-            <div class="profile-location">Madrid, Spain<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/women/12.jpg" alt="Aiko Tanaka">
-            <div class="profile-name">Aiko Tanaka</div>
-            <div class="profile-location">Tokyo, Japan<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
-            <div class="profile-name">Carlos Martinez</div>
-            <div class="profile-location">Madrid, Spain<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
-            <div class="profile-name">Carlos Martinez</div>
-            <div class="profile-location">Madrid, Spain<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/women/45.jpg" alt="Jane Smith">
-            <div class="profile-name">Jane Smith</div>
-            <div class="profile-location">London, UK<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe">
-            <div class="profile-name">John Doe</div>
-            <div class="profile-location">New York, USA<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
-            <div class="profile-name">Carlos Martinez</div>
-            <div class="profile-location">Madrid, Spain<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
-            <div class="profile-name">Carlos Martinez</div>
-            <div class="profile-location">Madrid, Spain<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe">
-            <div class="profile-name">John Doe</div>
-            <div class="profile-location">New York, USA<div class="nav-buttons"><a> View Story</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="user-box">
-          <div class="user-img" style="background: url('https://via.placeholder.com/60') no-repeat center/cover;">
-            <img class="profile-img" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Carlos Martinez">
-            <div class="profile-name">Carlos Martinez</div>
-            <div class="profile-location">Madrid, Spain<nav>
-                <div class="nav-buttons"><a> View Story</a></div>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="arrowUser right" onclick="slide(1)">&#10095;</button>
+    <div class="country">
+      <h2>Estonia</h2>
+      <p class="meta">Duration: 1 year (possible 6‑month extension) | Fee: ~€100 / US$100–109</p>
+      <ul>
+        <li>Income: ~€3,500/month (~US$3,800) :contentReference[oaicite:4]{index=4}</li>
+        <li>Requirements: remote employment contract, health insurance, bank statements, background check</li>
+      </ul>
     </div>
 
+    <div class="country">
+      <h2>Portugal</h2>
+      <p class="meta">Duration: 1 year, renewable | Fee: ~€75–82 (US $82)</p>
+      <ul>
+        <li>Income: ~€3,000–3,300/month (~US$3,280–3,319) :contentReference[oaicite:5]{index=5}</li>
+        <li>Other requirements: remote employer contract, bank balance (~€36,480), valid insurance, accommodation proof, possible tax filings if staying ≥183 days</li>
+      </ul>
+    </div>
+
+    <div class="country">
+      <h2>Costa Rica</h2>
+      <p class="meta">Duration: 1–2 years | Fee: ~US$100</p>
+      <ul>
+        <li>Income: ≥ US$3,000/month (US$5,000 if with dependents) :contentReference[oaicite:6]{index=6}</li>
+        <li>Requirements: bank statements, health insurance, official translations, application via government portal</li>
+      </ul>
+    </div>
+
+    <div class="country">
+      <h2>Colombia</h2>
+      <p class="meta">Duration: up to 2 years (max 180 days/year) | Fee: US$52 application + US$170–230 issuance</p>
+      <ul>
+        <li>Income: ~US$738/month (~3 million COP) :contentReference[oaicite:7]{index=7}</li>
+        <li>Must show remote work via contract or business ownership, plus health insurance</li>
+      </ul>
+    </div>
+
+    <div class="country">
+      <h2>Spain</h2>
+      <p class="meta">Duration: 1 year initial stay (renewable up to 5 years) | Fee: ~£62 (~€70–80)</p>
+      <ul>
+        <li>Income: ≥ €2,760/month (~US$3,000 depending on exchange rate) :contentReference[oaicite:8]{index=8}</li>
+        <li>Requirements: 80%+ remote income, health insurance, accommodation, criminal record check; special tax incentive under Startup Act</li>
+      </ul>
+    </div>
+
+    <div class="country">
+      <h2>Greece</h2>
+      <p class="meta">Duration: 1 year (renewable) | Fee: ~€75 + €150 admin</p>
+      <ul>
+        <li>Income: ≥ €3,500/month (~US$3,600) :contentReference[oaicite:9]{index=9}</li>
+        <li>Other: health insurance, rental proof, clean record</li>
+      </ul>
+    </div>
+
+    <div class="country">
+      <h2>Malaysia (De Rantau Nomad Pass)</h2>
+      <p class="meta">Duration: 3–12 months (renewable) | Fee: ~RM1,000 (~US$214)</p>
+      <ul>
+        <li>Income: US$2,000/month working for foreign company (or lower income if working locally but then taxed) :contentReference[oaicite:10]{index=10}</li>
+        <li>Eligible professions: tech, marketing, cybersecurity, creators</li>
+      </ul>
+    </div>
+
+    <div class="country">
+      <h2>Taiwan (Employment Gold Card)</h2>
+      <p class="meta">Duration: 1–3 years (extendable up to 6) | Fee: US$100–310</p>
+      <ul>
+        <li>Income: US$5,700/month (or annual earning thresholds by age) :contentReference[oaicite:11]{index=11}</li>
+        <li>Targets high-skilled professionals; card doubles as work permit and residence permit</li>
+      </ul>
+    </div>
+
+    <div class="country">
+      <h2>South Korea</h2>
+      <p class="meta">Duration: 1 year (renewable to 2) | Pilot program since Jan 2024</p>
+      <ul>
+        <li>Income: ≥ US$66,000/year (~US$5,300/month) | ≥1 year professional experience needed :contentReference[oaicite:12]{index=12}</li>
+        <li>Includes family accompaniment</li>
+      </ul>
+    </div>
+
+    <div class="country">
+      <h2>Croatia</h2>
+      <p class="meta">Duration: 1 year (renewable) | Fee: ~€280 (~US$300)</p>
+      <ul>
+        <li>Income: ~€2,300/month (~US$2,500) :contentReference[oaicite:13]{index=13}</li>
+        <li>Remote work required, and nomads are exempt from paying Croatia income tax during stay</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Other Notable Countries & Extras</h2>
+    <p>Additional digital nomad visa destinations include but are not limited to: UAE (Dubai/Abu Dhabi), Malta, Latvia, Argentina, Brazil, Georgia, Romania, Antigua & Barbuda, Barbados, Seychelles, Montenegro, Bermuda, Uruguay, Sri Lanka, Turkey, Vietnam, Thailand, Philippines, South Africa, India (Goa) and more — totalling up to ~66 countries globally :contentReference[oaicite:14]{index=14}.</p>
+    <p>Many programs have unique local perks—Costa Rica offers two-year stays tax-free, Georgia and Uruguay may have no fee at all, and some Caribbean nations allow family accompaniment or impose no income minimum :contentReference[oaicite:15]{index=15}.</p>
+  </section>
+
+  <section>
+    <h2>Before You Apply</h2>
+    <ul>
+      <li>Check applicable income levels and types of permissible remote work</li>
+      <li>Ensure you understand local tax implications—especially if you stay ≥183 days/year</li>
+      <li>Verify health insurance coverage and translation requirements</li>
+      <li>Plan logistics: legal eligibility, background checks, visa fee budgets, and accommodation proof</li>
+    </ul>
+  </section>
   </div>
+    
   <h2 style="text-align: center; margin-bottom: 30px;margin-top:50px">Premium Destinations</h2>
   <div class="slider-container">
     <div class="arrow arrow-left" onclick="moveSlide(-1)">&#10094;</div>
