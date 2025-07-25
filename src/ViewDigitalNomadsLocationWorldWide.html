@@ -67,7 +67,7 @@
       cursor: pointer;
       position: absolute;
       left: 5px;
-      top: 87px;
+      top: 50px;
       font-size: 20px;
       color: darkblue;
       z-index: 1001;
@@ -123,11 +123,6 @@
       margin-top: 0px;
       padding: 0px;
     }
-    .side-content {
-      margin-top: 0px;
-      margin-left: 400px;
-      padding: 0px;
-    }
 
     iframe {
       width: 98%;
@@ -157,18 +152,11 @@
 
     .container {
       max-width: 1000px;
-      margin: 20px;
+      margin: auto;
       padding: 20px;
       background: white;
     }
 
-    .reservespotcontainer{
-    max-width: 110px;
-      margin: auto;
-      padding: 1000px 20px 0px 20px;
-      background: white;
-
-    }
     .section {
       margin-bottom: 40px;
     }
@@ -215,8 +203,36 @@
 
     /* ------------------------------------------------ */
 
-    #map { width: 100%; height: 100vh; }
-    .popup-img { width: 100%; border-radius: 8px; margin-top: 5px; }
+    #map {
+      height: 100vh;
+    }
+
+    .filters {
+      position: absolute;
+      top: 317px;
+      left: 1100px;
+      background: white;
+      z-index: 1000;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      width: 200px;
+    }
+
+    .filters button {
+      margin: 5px 0;
+      padding: 6px 12px;
+      border: none;
+      background-color: #0077cc;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .filters button:hover {
+      background-color: #005fa3;
+    }
 
     /* ----------------------------------------- */
 
@@ -273,13 +289,18 @@
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.3738026319794!2d144.95743221570534!3d-37.816382979751504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5772c6335123bc1!2sFederation+Square!5e0!3m2!1sen!2sau!4v1510919093301"
       allowfullscreen>
     </iframe> -->
-    
+    <div class="filters">
+      <strong>Filter by Region:</strong><br>
+      <button onclick="filterMarkers('All')">🌍 All</button>
+      <button onclick="filterMarkers('Asia')">🌏 Asia</button>
+      <button onclick="filterMarkers('Europe')">🌍 Europe</button>
+      <button onclick="filterMarkers('Americas')">🌎 Americas</button>
+    </div>
 
     <div id="map"></div>
 
   </section>
   <div class="main-content container">
-
     <section class="section">
       <h2>Trip Overview</h2>
       <div class="info-cards">
@@ -338,13 +359,7 @@
         <span class="badge">Female Only</span>
       </div>
     </section>
-<section class="section">
-       <button class="reserve-btn">Reserve Spot</button></section>
-  </div>
-  <div class="side-content reservespotcontainer">        
-    
-<section class="section">
-       <button class="reserve-btn">Reserve Spot</button></section>
+
   </div>
 
   <!-- Traveller Website Footer -->
@@ -404,35 +419,101 @@
       document.getElementById("sideMenu").classList.toggle("active");
     }
   </script>
-   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- JS Libraries -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
   <script>
-    const map = L.map('map').setView([61.2163, -149.8949], 6);
-
+    var map = L.map('map').setView([20, 0], 2);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    const locations = [
-      { name: "Anchorage", coords: [61.2163, -149.8949], img: "assets/Anchorage.jpg" },
-      { name: "Denali National Park (McKinley Park)", coords: [63.7348, -148.9187], img: "https://upload.wikimedia.org/wikipedia/commons/b/bb/Denali_Mt_McKinley.jpg" },
-      { name: "Talkeetna", coords: [62.3209, -150.1066], img: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Talkeetna_alaska.jpg" },
-      { name: "Glacier View", coords: [61.8222, -147.7032], img: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Matanuska_Glacier_Alaska.jpg" },
-      { name: "McCarthy (Wrangell–St. Elias)", coords: [61.4336, -142.9217], img: "https://upload.wikimedia.org/wikipedia/commons/3/3d/McCarthy_Wrangell.jpg" },
-      { name: "Valdez", coords: [61.1308, -146.3483], img: "https://upload.wikimedia.org/wikipedia/commons/b/be/Valdez.jpg" },
-      { name: "Whittier", coords: [60.7743, -148.6833], img: "https://upload.wikimedia.org/wikipedia/commons/c/c6/Whittier_Alaska.jpg" },
-      { name: "Homer", coords: [59.6425, -151.5483], img: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Homer_Alaska.jpg" },
-      { name: "Ninilchik", coords: [60.0492, -151.6719], img: "https://upload.wikimedia.org/wikipedia/commons/1/10/Ninilchik_Alaska_view.jpg" }
+    var allMarkers = [];
+    var markerClusters = L.markerClusterGroup();
+
+    const travelData = [
+      {
+        lat: 37.7749, lng: -122.4194, region: "Americas",
+        title: "USA West Coast",
+        media: "https://i.imgur.com/WzL9pL6.jpg",
+        story: "Road trip from San Francisco to Seattle."
+      },
+      {
+        lat: 4.5709, lng: -74.2973, region: "Americas",
+        title: "Colombia",
+        media: "https://i.imgur.com/B1p9dNz.jpg",
+        story: "Coffee plantations and Amazon trekking."
+      },
+      {
+        lat: -14.2350, lng: -51.9253, region: "Americas",
+        title: "Brazil",
+        media: "https://i.imgur.com/jA8PBF9.jpg",
+        story: "Carnival fever in Rio de Janeiro."
+      },
+      {
+        lat: 60.4720, lng: 8.4689, region: "Europe",
+        title: "Norway",
+        media: "https://i.imgur.com/yXou1fG.jpg",
+        story: "Kayaking through breathtaking fjords."
+      },
+      {
+        lat: 20.5937, lng: 78.9629, region: "Asia",
+        title: "India",
+        media: "https://i.imgur.com/XWv3OQ0.jpg",
+        story: "From Jaipur palaces to Kerala backwaters."
+      },
+      {
+        lat: 13.7563, lng: 100.5018, region: "Asia",
+        title: "Thailand",
+        media: "https://i.imgur.com/MU9Bkdn.jpg",
+        story: "Bangkok nights and Phi Phi diving."
+      },
+      {
+        lat: -0.7893, lng: 113.9213, region: "Asia",
+        title: "Indonesia",
+        media: "https://i.imgur.com/7LIlrjV.jpg",
+        story: "Surfing and coworking in Bali."
+      },
+      {
+        lat: -25.2744, lng: 133.7751, region: "Asia",
+        title: "Australia",
+        media: "https://i.imgur.com/c6S1Tsl.jpg",
+        story: "Sydney to Perth camper trip."
+      },
+      {
+        lat: 61.5240, lng: 105.3188, region: "Europe",
+        title: "Russia",
+        media: "https://i.imgur.com/lXNtdOp.jpg",
+        story: "Trans-Siberian train journey."
+      }
     ];
 
-    const route = locations.map(loc => loc.coords);
+    function createMarkers(data) {
+      markerClusters.clearLayers();
+      allMarkers = [];
 
-    locations.forEach(loc => {
-      L.marker(loc.coords).addTo(map)
-        .bindPopup(`<strong>${loc.name}</strong><br/><img src="${loc.img}" class="popup-img" alt="${loc.name}">`);
-    });
+      data.forEach(loc => {
+        const marker = L.marker([loc.lat, loc.lng])
+          .bindPopup(`<strong>${loc.title}</strong><br>
+        <img src="${loc.media}" alt="${loc.title}" style="width:100%; border-radius:6px;"><br>
+        ${loc.story}`);
+        allMarkers.push({ marker: marker, region: loc.region });
+        markerClusters.addLayer(marker);
+      });
 
-    L.polyline(route, { color: 'blue', weight: 4, opacity: 0.7 }).addTo(map);
+      map.addLayer(markerClusters);
+    }
+
+    function filterMarkers(region) {
+      markerClusters.clearLayers();
+      allMarkers.forEach(item => {
+        if (region === 'All' || item.region === region) {
+          markerClusters.addLayer(item.marker);
+        }
+      });
+    }
+
+    createMarkers(travelData);
   </script>
 </body>
 

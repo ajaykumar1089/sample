@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alaska Travel Route Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body, html { margin: 0; padding: 0; height: 100%; }
+    #map { width: 100%; height: 100vh; }
+    .popup-img { width: 100%; border-radius: 8px; margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([61.2163, -149.8949], 6);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const locations = [
+      { name: "Anchorage", coords: [61.2163, -149.8949], img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Downtown_Anchorage.jpg" },
+      { name: "Denali National Park (McKinley Park)", coords: [63.7348, -148.9187], img: "https://upload.wikimedia.org/wikipedia/commons/b/bb/Denali_Mt_McKinley.jpg" },
+      { name: "Talkeetna", coords: [62.3209, -150.1066], img: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Talkeetna_alaska.jpg" },
+      { name: "Glacier View", coords: [61.8222, -147.7032], img: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Matanuska_Glacier_Alaska.jpg" },
+      { name: "McCarthy (Wrangell–St. Elias)", coords: [61.4336, -142.9217], img: "https://upload.wikimedia.org/wikipedia/commons/3/3d/McCarthy_Wrangell.jpg" },
+      { name: "Valdez", coords: [61.1308, -146.3483], img: "https://upload.wikimedia.org/wikipedia/commons/b/be/Valdez.jpg" },
+      { name: "Whittier", coords: [60.7743, -148.6833], img: "https://upload.wikimedia.org/wikipedia/commons/c/c6/Whittier_Alaska.jpg" },
+      { name: "Homer", coords: [59.6425, -151.5483], img: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Homer_Alaska.jpg" },
+      { name: "Ninilchik", coords: [60.0492, -151.6719], img: "https://upload.wikimedia.org/wikipedia/commons/1/10/Ninilchik_Alaska_view.jpg" }
+    ];
+
+    const route = locations.map(loc => loc.coords);
+
+    locations.forEach(loc => {
+      L.marker(loc.coords).addTo(map)
+        .bindPopup(`<strong>${loc.name}</strong><br/><img src="${loc.img}" class="popup-img" alt="${loc.name}">`);
+    });
+
+    L.polyline(route, { color: 'blue', weight: 4, opacity: 0.7 }).addTo(map);
+  </script>
+</body>
+</html>
