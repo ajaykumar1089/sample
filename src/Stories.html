@@ -412,6 +412,7 @@
       margin: 0 auto;
       padding: 40px 20px;
     }
+
     h1 {
       text-align: center;
       font-size: 3em;
@@ -419,53 +420,64 @@
       color: #0072ff;
       animation: fadeInDown 1.2s ease-in-out;
     }
+
     .story {
       display: flex;
       background: #fff;
       margin-bottom: 30px;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       animation: slideUp 1s ease-in-out;
       transition: transform 0.3s ease;
     }
+
     .story:hover {
       transform: scale(1.02);
     }
+
     .story img {
       width: 40%;
       object-fit: cover;
     }
+
     .story-content {
       padding: 20px;
     }
+
     .story-content h2 {
       margin-bottom: 10px;
       color: #ff4e50;
     }
+
     .story-content p {
       line-height: 1.7;
     }
+
     @keyframes fadeInDown {
       from {
         opacity: 0;
         transform: translateY(-40px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
+
     @keyframes slideUp {
       from {
         opacity: 0;
         transform: translateY(40px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
+
     /* ---------------------------------------- */
   </style>
 </head>
@@ -489,7 +501,7 @@
   <!-- Header Section -->
   <header>
     <div class="d-flex align-items-center">
-     <a href="index.html"><img src="assets/logo_travellerclicks - Copy.png" width="85" alt="logo" /> </a>     
+      <a href="index.html"><img src="assets/logo_travellerclicks - Copy.png" width="85" alt="logo" /> </a>
     </div>
     <div class="search-box">
       <input type="text" placeholder="Search destinations, hotels...">
@@ -505,49 +517,38 @@
   <!-- Main Content -->
   <div class="main-content container">
     <div class="container">
-    <h1>Inspiring Travel Stories</h1>
+      <h1>Inspiring Travel Stories</h1>
 
-    <div class="story">
-      <img src="https://source.unsplash.com/800x600/?travel,beach" alt="Beach Trip">
-      <div class="story-content">
-        <h2>Finding Peace in Bali</h2>
-        <p>After months of burnout, I took a solo trip to Bali. From morning yoga sessions to evening sunsets by the beach, I rediscovered myself one sunrise at a time. A journey that changed everything.</p>
+      <div class="story">
+        <img src="assets/beachtrip.webp" alt="Beach Trip">
+        <div class="story-content">
+          <h2>Finding Peace in Bali</h2>
+          <p>After months of burnout, I took a solo trip to Bali. From morning yoga sessions to evening sunsets by the
+            beach, I rediscovered myself one sunrise at a time. A journey that changed everything.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="story">
-      <img src="https://source.unsplash.com/800x600/?mountain,hike" alt="Mountain Adventure">
-      <div class="story-content">
-        <h2>Climbing the Andes</h2>
-        <p>Trekking through the Andes was both a challenge and a revelation. The thin air, snow-capped views, and moments of solitude gave me a new perspective on endurance and beauty.</p>
+      <div class="story">
+        <img src="assets/mountainadventure.webp" alt="Mountain Adventure">
+        <div class="story-content">
+          <h2>Climbing the Andes</h2>
+          <p>Trekking through the Andes was both a challenge and a revelation. The thin air, snow-capped views, and
+            moments of solitude gave me a new perspective on endurance and beauty.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="story">
-      <img src="https://source.unsplash.com/800x600/?city,europe" alt="European City">
-      <div class="story-content">
-        <h2>Wandering in Prague</h2>
-        <p>Wandering aimlessly through the cobbled streets of Prague, I stumbled upon hidden jazz clubs, fairytale architecture, and the kindness of strangers. Every turn felt like a scene from a movie.</p>
+      <div class="story">
+        <img src="assets/europeancity.webp" alt="European City">
+        <div class="story-content">
+          <h2>Wandering in Prague</h2>
+          <p>Wandering aimlessly through the cobbled streets of Prague, I stumbled upon hidden jazz clubs, fairytale
+            architecture, and the kindness of strangers. Every turn felt like a scene from a movie.</p>
+        </div>
       </div>
-    </div>
 
+    </div>
   </div>
-    </div>  
-  <h2 style="text-align: center; margin-bottom: 30px;margin-top:50px">Premium Destinations</h2>
-  <div class="slider-container">
-    <div class="arrow arrow-left" onclick="moveSlide(-1)">&#10094;</div>
-    <div class="slider" id="slider">
-      <div class="slide"><img src="assets/blog1.jpg" alt="Image 1"></div>
-      <div class="slide"><img src="assets/blog2.jpg" alt="Image 2"></div>
-      <div class="slide"><img src="assets/blog3.jpg" alt="Image 1"></div>
-      <div class="slide"><img src="assets/Destination6.png" alt="Image 2"></div>
-      <div class="slide"><img src="assets/Destination4.png" alt="Image 3"></div>
-      <div class="slide"><img src="assets/Destination3.png" alt="Image 1"></div>
-      <div class="slide"><img src="assets/Destination2.png" alt="Image 2"></div>
-      <div class="slide"><img src="assets/Destination1.png" alt="Image 3"></div>
-    </div>
-    <div class="arrow arrow-right" onclick="moveSlide(1)">&#10095;</div>
-  </div>
+
 
 
 
@@ -637,5 +638,4 @@
     }
   </script>
 </body>
-
 </html>

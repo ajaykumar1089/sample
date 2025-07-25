@@ -2,22 +2,72 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Leaflet & Clustering CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
-
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <title>3 weeks CANADA & ALASKA Epic Road Trip</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background: #f7f9fb;
-      color: #333;
     }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+
+    /* header, footer {
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    } */
+
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 120px);
+      /* full height minus header/footer */
+    }
+
+    .left-sidebar {
+      width: 20%;
+      background: #ccc;
+      padding: 20px;
+    }
+
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 30px;
+    }
+
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* Responsive (for mobile) */
+    @media (max-width: 768px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .left-sidebar,
+      .right-sidebar,
+      .main-content {
+        width: 100%;
+      }
+    }
+
+
 
     header {
       padding: 10px 20px;
@@ -123,6 +173,7 @@
       margin-top: 0px;
       padding: 0px;
     }
+
     .side-content {
       margin-top: 0px;
       margin-left: 400px;
@@ -162,13 +213,14 @@
       background: white;
     }
 
-    .reservespotcontainer{
-    max-width: 110px;
+    .reservespotcontainer {
+      max-width: 110px;
       margin: auto;
       padding: 1000px 20px 0px 20px;
       background: white;
 
     }
+
     .section {
       margin-bottom: 40px;
     }
@@ -215,11 +267,34 @@
 
     /* ------------------------------------------------ */
 
-    #map { width: 100%; height: 100vh; }
-    .popup-img { width: 100%; border-radius: 8px; margin-top: 5px; }
+    #map {
+      width: 100%;
+      height: 100vh;
+    }
+
+    .popup-img {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 5px;
+    }
 
     /* ----------------------------------------- */
 
+    /* ------------------------------------------------------- */
+    .fixed-box {
+      position: fixed;
+      top: 201px;
+      right: 20px;
+      width: 250px;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    /* ------------------------------------------------------------- */
     .badge {
       display: inline-block;
       background: #e1ecf4;
@@ -229,13 +304,57 @@
       margin: 3px;
     }
 
-    footer p {
+    /* /* ------------------------------------------------------------------------------ */
+    .booking-box {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: 25px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .booking-box h2 {
+      margin-bottom: 15px;
+      font-size: 11px;
+      color: #333;
+    }
+
+    .date-range,
+    .price {
+      margin: 10px 0;
+      font-size: 16px;
+      color: #000;
+    }
+
+    .green-glow-button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #28a745;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 0 12px #28a745;
+      transition: background 0.3s;
+    }
+
+    .green-glow-button:hover {
+      background: #218838;
+    }
+
+    /* ----------------------------------------------------------------------------------- */
+    */ footer p {
       margin: 0;
     }
   </style>
 </head>
 
 <body>
+
   <!-- Menu Toggle Button -->
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
@@ -249,6 +368,7 @@
     <a href="#">🎫 Tickets</a>
     <a href="#">📞 Contact Us</a>
   </div>
+
   <header>
     <div class="d-flex align-items-center">
       <a href="index.html"><img src="assets/logo_travellerclicks - Copy.png" width="85" alt="logo" /> </a>
@@ -264,87 +384,114 @@
       <a href="#" class="btn btn-primary btn-sm">Login</a>
     </div>
   </header>
-  <section class="hero">
-    <h1>3 weeks CANADA & ALASKA Epic Road Trip</h1>
-    <p>British Columbia & Alberta with UNESCO Jasper and Banff — July 2026</p>
-    <h2 style="text-align: center; margin-bottom: 30px;margin-top:15px">Route Map - Source - Live Location(Team Leader)
-      - Destination</h2>
-    <!-- <iframe
+
+  <div class="layout">
+    <div class="main-content">
+      <section class="hero">
+        <h1>3 weeks CANADA & ALASKA Epic Road Trip</h1>
+        <p>British Columbia & Alberta with UNESCO Jasper and Banff — July 2026</p>
+        <h2 style="text-align: center; margin-bottom: 30px;margin-top:15px">Route Map - Source - Live Location(Team
+          Leader)
+          - Destination</h2>
+        <!-- <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.3738026319794!2d144.95743221570534!3d-37.816382979751504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5772c6335123bc1!2sFederation+Square!5e0!3m2!1sen!2sau!4v1510919093301"
       allowfullscreen>
     </iframe> -->
-    
 
-    <div id="map"></div>
+        <div id="map"></div>
 
-  </section>
-  <div class="main-content container">
+      </section>
+      <div class="fixed-box">
+        <div class="booking-box">
+          <h2>
 
-    <section class="section">
-      <h2>Trip Overview</h2>
-      <div class="info-cards">
-        <div class="card"><strong>Host:</strong> Maria</div>
-        <div class="card"><strong>Dates:</strong> 27 Jun 2026 → 17 Jul 2026</div>
-        <div class="card"><strong>Duration:</strong> 21 days</div>
-        <div class="card"><strong>Stops:</strong> 14</div>
-        <div class="card"><strong>Group Size:</strong> 2–3 mates</div>
-        <div class="card"><strong>Region:</strong> North America</div>
-      </div>
-    </section>
 
-    <section class="section">
-      <h2>Trip Leader</h2>
-      <div class="leader">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Maria">
-        <div>
-          <strong>Maria, 36</strong><br>
-          Languages: English, (maybe German)
+
+
+            <div class="date-range">
+              <strong><i class="fas fa-calendar-alt"></i></strong>
+              Start: <span id="start-date">2025-08-10</span><br>
+              End: <span id="end-date">2025-08-20</span>
+            </div>
+
+            <div class="price">
+              <strong>Total Price:</strong> ₹42,000
+              <strong>Join with just 20% deposit</strong>
+
+            </div>
+          </h2>
+          <button class="green-glow-button">Reserve Spot</button>
+          <div class="price">
+            <strong>1 Spot Left</strong><br>
+            Free 7 Days Cancellation
+          </div>
         </div>
+
       </div>
-    </section>
+      <div class="main-content container">
 
-    <section class="section">
-      <h2>Highlights & Included</h2>
-      <ul>
-        <li>20 nights: motels, ranches, backcountry campsites.</li>
-        <li>National Park & camping fees, rental car + insurance + 2nd driver.</li>
-        <li>Ferry crossings, camping equipment, bear spray & safety instr.</li>
-        <li>Day trip to Alaska, salmon run, glacier hikes, whale & bear watching.</li>
-        <li>WhatsApp group, packing list, flight assistance, pre‑planned itinerary.</li>
-      </ul>
-      <p><em>Excluded:</em> meals, drinks, gas, international flights, insurance, personal gear, visa, extra
-        excursions.</p>
-    </section>
+        <section class="section">
+          <h2>Trip Overview</h2>
+          <div class="info-cards">
+            <div class="card"><strong>Host:</strong> Maria</div>
+            <div class="card"><strong>Dates:</strong> 27 Jun 2026 → 17 Jul 2026</div>
+            <div class="card"><strong>Duration:</strong> 21 days</div>
+            <div class="card"><strong>Stops:</strong> 14</div>
+            <div class="card"><strong>Group Size:</strong> 2–3 mates</div>
+            <div class="card"><strong>Region:</strong> North America</div>
+          </div>
+        </section>
+        <section class="section">
+          <h2>Trip Leader</h2>
+          <div class="leader">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Maria">
+            <div>
+              <strong>Maria, 36</strong><br>
+              Languages: English, (maybe German)
+            </div>
+          </div>
+        </section>
 
-    <section class="section">
-      <h2>Day‑by‑Day Itinerary</h2>
-      <div class="itinerary-day"><strong>Day 1:</strong> Arrival in Vancouver & orientation.</div>
-      <div class="itinerary-day"><strong>Day 2–3:</strong> Drive to Jasper National Park – glacier hikes.</div>
-      <div class="itinerary-day"><strong>Day 4–5:</strong> Explore Banff & surrounding UNESCO sites.</div>
-      <div class="itinerary-day"><strong>Day 6–7:</strong> Fishing, wildlife watching, village tours.</div>
-      <div class="itinerary-day"><strong>Day 8:</strong> Day trip to Alaska (Hyder & salmon run).</div>
-      <div class="itinerary-day"><strong>Day 9:</strong> Return via Telegraph Cove & Vancouver Island.</div>
-      <!-- Add Day 10–21 similarly -->
-    </section>
+        <section class="section">
+          <h2>Highlights & Included</h2>
+          <ul>
+            <li>20 nights: motels, ranches, backcountry campsites.</li>
+            <li>National Park & camping fees, rental car + insurance + 2nd driver.</li>
+            <li>Ferry crossings, camping equipment, bear spray & safety instr.</li>
+            <li>Day trip to Alaska, salmon run, glacier hikes, whale & bear watching.</li>
+            <li>WhatsApp group, packing list, flight assistance, pre‑planned itinerary.</li>
+          </ul>
+          <p><em>Excluded:</em> meals, drinks, gas, international flights, insurance, personal gear, visa, extra
+            excursions.</p>
+        </section>
 
-    <section class="section">
-      <h2>Trip Style & Tags</h2>
-      <div class="badges">
-        <span class="badge">Road Trip</span>
-        <span class="badge">Adventure</span>
-        <span class="badge">Nature</span>
-        <span class="badge">Wildlife</span>
-        <span class="badge">Sports</span>
-        <span class="badge">Female Only</span>
+        <section class="section">
+          <h2>Day‑by‑Day Itinerary</h2>
+          <div class="itinerary-day"><strong>Day 1:</strong> Arrival in Vancouver & orientation.</div>
+          <div class="itinerary-day"><strong>Day 2–3:</strong> Drive to Jasper National Park – glacier hikes.</div>
+          <div class="itinerary-day"><strong>Day 4–5:</strong> Explore Banff & surrounding UNESCO sites.</div>
+          <div class="itinerary-day"><strong>Day 6–7:</strong> Fishing, wildlife watching, village tours.</div>
+          <div class="itinerary-day"><strong>Day 8:</strong> Day trip to Alaska (Hyder & salmon run).</div>
+          <div class="itinerary-day"><strong>Day 9:</strong> Return via Telegraph Cove & Vancouver Island.</div>
+          <!-- Add Day 10–21 similarly -->
+        </section>
+
+        <section class="section">
+          <h2>Trip Style & Tags</h2>
+          <div class="badges">
+            <span class="badge">Road Trip</span>
+            <span class="badge">Adventure</span>
+            <span class="badge">Nature</span>
+            <span class="badge">Wildlife</span>
+            <span class="badge">Sports</span>
+            <span class="badge">Female Only</span>
+          </div>
+        </section>
+
       </div>
-    </section>
-<section class="section">
-       <button class="reserve-btn">Reserve Spot</button></section>
-  </div>
-  <div class="side-content reservespotcontainer">        
-    
-<section class="section">
-       <button class="reserve-btn">Reserve Spot</button></section>
+    </div>
+
+
   </div>
 
   <!-- Traveller Website Footer -->
@@ -404,7 +551,7 @@
       document.getElementById("sideMenu").classList.toggle("active");
     }
   </script>
-   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     const map = L.map('map').setView([61.2163, -149.8949], 6);
 
@@ -434,6 +581,7 @@
 
     L.polyline(route, { color: 'blue', weight: 4, opacity: 0.7 }).addTo(map);
   </script>
+
 </body>
 
 </html>
