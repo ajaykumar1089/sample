@@ -12,7 +12,8 @@
       background: #f5f5f5;
       color: #333;
     }
-.side-menu {
+
+    .side-menu {
       width: 250px;
       background: #0d6efd;
       color: white;
@@ -104,6 +105,7 @@
 
       font-size: 16px;
     }
+
     .page-container {
       display: flex;
       max-width: 1400px;
@@ -182,7 +184,7 @@
       display: flex;
       flex-direction: column;
       padding-top: 0px;
-    } 
+    }
 
     .tour-listing {
       display: grid;
@@ -228,7 +230,8 @@
       font-weight: bold;
       color: #222;
     }
-     /* ---------------------------------- */
+
+    /* ---------------------------------- */
     .nomad-job-btn {
       display: inline-block;
       background: linear-gradient(135deg, #00c6ff, #0072ff);
@@ -254,7 +257,7 @@
 </head>
 
 <body>
-   <!-- Menu Toggle Button -->
+  <!-- Menu Toggle Button -->
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
   <!-- Side Menu -->
@@ -267,9 +270,9 @@
     <a href="#">🎫 Tickets</a>
     <a href="#">📞 Contact Us</a>
   </div>
-   <header>
+  <header>
     <div class="d-flex align-items-center">
-     <a href="index.html"><img src="assets/logo_travellerclicks - Copy.png" width="85" alt="logo" /> </a>     
+      <a href="index.html"><img src="assets/logo_travellerclicks - Copy.png" width="85" alt="logo" /> </a>
     </div>
     <div class="search-box">
       <input type="text" placeholder="Search destinations, hotels...">
@@ -285,8 +288,23 @@
   <div class="page-container">
     <!-- Sidebar Filters -->
     <aside class="sidebar">
-      <h3>Filter Tours</h3>
+      <div class="filter-group">
+        <label>Destination</label>
+        <input type="text" placeholder="e.g. Berlin">
+      </div>
 
+      <div class="filter-group">
+        <label>Start Location</label>
+        <input type="text" placeholder="e.g. Munich">
+      </div>
+
+      <div class="filter-group">
+        <label>End Location</label>
+        <input type="text" placeholder="e.g. Frankfurt">
+      </div>
+
+      <button class="search-btn">Search Tours</button>
+      <h3>Filter Tours</h3>
       <div class="filter-group">
         <label for="duration">Duration</label>
         <select id="duration">
@@ -336,28 +354,10 @@
         <label><input type="checkbox"> Medium</label>
         <label><input type="checkbox"> Premium</label>
       </div>
-
-      <div class="filter-group">
-        <label>Destination</label>
-        <input type="text" placeholder="e.g. Berlin">
-      </div>
-
-      <div class="filter-group">
-        <label>Start Location</label>
-        <input type="text" placeholder="e.g. Munich">
-      </div>
-
-      <div class="filter-group">
-        <label>End Location</label>
-        <input type="text" placeholder="e.g. Frankfurt">
-      </div>
-
-      <button class="search-btn">Search Tours</button>
     </aside>
 
     <!-- Main Content -->
     <div class="main-content">
-    
 
       <!-- Tour Listings -->
       <div class="tour-listing">
@@ -610,5 +610,4 @@
   </div>
 
 </body>
-
 </html>

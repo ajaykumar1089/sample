@@ -288,8 +288,24 @@
   <div class="page-container">
     <!-- Sidebar Filters -->
     <aside class="sidebar">
-      <h3>Filter Tours</h3>
+      <div class="filter-group">
+        <label>Destination</label>
+        <input type="text" placeholder="e.g. Berlin">
+      </div>
 
+      <div class="filter-group">
+        <label>Start Location</label>
+        <input type="text" placeholder="e.g. Munich">
+      </div>
+
+      <div class="filter-group">
+        <label>End Location</label>
+        <input type="text" placeholder="e.g. Frankfurt">
+      </div>
+
+      <button class="search-btn">Search Tours</button>
+
+      <h3>Filter Tours</h3>
       <div class="filter-group">
         <label for="duration">Duration</label>
         <select id="duration">
@@ -338,24 +354,7 @@
         <label><input type="checkbox"> Budget</label>
         <label><input type="checkbox"> Medium</label>
         <label><input type="checkbox"> Premium</label>
-      </div>
-
-      <div class="filter-group">
-        <label>Destination</label>
-        <input type="text" placeholder="e.g. Berlin">
-      </div>
-
-      <div class="filter-group">
-        <label>Start Location</label>
-        <input type="text" placeholder="e.g. Munich">
-      </div>
-
-      <div class="filter-group">
-        <label>End Location</label>
-        <input type="text" placeholder="e.g. Frankfurt">
-      </div>
-
-      <button class="search-btn">Search Tours</button>
+      </div>      
     </aside>
 
     <!-- Main Content -->
